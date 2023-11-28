@@ -3,7 +3,7 @@ const {getQueryOptions} = require("../../utils/order.filter");
 
 module.exports.getAllOrders = async (req, res) => {
     const query = req.query;
-    console.log(query)
+    // console.log(query)
     const queryOptions = getQueryOptions(query);
 
     try {

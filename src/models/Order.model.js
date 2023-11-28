@@ -14,8 +14,6 @@ module.exports = sequelize.define(
         winner_id: {type: DataTypes.UUID, allowNull: true},
         tender_start: {type: DataTypes.DATE, allowNull: false},
         tender_stop: {type: DataTypes.DATE, allowNull: false},
-        valid_from: {type: DataTypes.DATE, allowNull: false},
-        valid_to: {type: DataTypes.DATE, allowNull: false},
         created_at: {type: DataTypes.DATE, allowNull: false},
         updated_at: {type: DataTypes.DATE, allowNull: false}
     },

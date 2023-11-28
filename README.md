@@ -1,24 +1,26 @@
 ### Filter options:
+&#x2714;
+&#x2718;
 
-- order status
-- region
-- price (order price and minimal step)
-- dates
-- cargo type
+- [x] order status
+- [ ] region
+- [x] price (order price and minimal step)
+- [ ] dates
+- [ ] cargo type
 
 ### Possible filter options
 
-- weight (cargo) (_general for ordering?_)
-- volume (cargo) (_general for ordering?_)
-- passengers capacity (cargo)
-- dimension [h, w, l] (cargo) (_general for ordering?_)
+- [ ] weight (cargo) (_general for ordering?_)
+- [ ] volume (cargo) (_general for ordering?_)
+- [ ] passengers capacity (cargo)
+- [ ] dimension [h, w, l] (cargo) (_general for ordering?_)
 
 ### Search by field
 
-- title (order)
-- description (order)
-- title (cargo)
-- description (cargo)
+- [x] title (order)
+- [x] description (order)
+- [ ] title (cargo)
+- [ ] description (cargo)
 
 ### _**Search or filter order requirements?**_
 
@@ -29,20 +31,20 @@
 ### Example http request with query parameters
 
 - https://localhost:9099/api/v1/orders?satus=new
-- https://localhost:9099/api/v1/orders?satus=new&range-price[start]=100&range-price[end]=10000
-- https://localhost:9099/api/v1/orders?satus=new&range-price[start]=100&range-price[end]=10000&range-minimal-step[start]=1&range-minimal-step[end]=100
+- https://localhost:9099/api/v1/orders?satus=new&rangePrice[start]=100&rangePrice[end]=10000
+- https://localhost:9099/api/v1/orders?satus=new&rangePrice[start]=100&rangePrice[end]=10000&rangeMinimalStep[start]=1&rangeMinimalStep[end]=100
 
 #### Example in the form of a json
 
 ```json
 {
-    "status": "string",
+    "status": "string", 
     // ["new", "receiving_proposals", "pending_tender", "tender_completed", "closed", "canceled"]
-    "range-price": {
+    "rangePrice": {
         "start": "number",
         "end": "number"
     },
-    "range-minimal-step": {
+    "rangeMinimalStep": {
         "start": "number",
         "end": "number"
     }
