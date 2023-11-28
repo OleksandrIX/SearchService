@@ -1,12 +1,10 @@
 ### Filter options:
-&#x2714;
-&#x2718;
 
 - [x] order status
 - [ ] region
 - [x] price (order price and minimal step)
-- [ ] dates
-- [ ] cargo type
+- [x] dates
+- [x] cargo type
 
 ### Possible filter options
 
@@ -19,10 +17,9 @@
 
 - [x] title (order)
 - [x] description (order)
-- [ ] title (cargo)
-- [ ] description (cargo)
-
-### _**Search or filter order requirements?**_
+- [x] title (cargo)
+- [x] description (cargo)
+- [x] requirement (requirements)
 
 ### SSL
 
@@ -38,8 +35,10 @@
 
 ```json
 {
-    "status": "string", 
+    "status": "string",
     // ["new", "receiving_proposals", "pending_tender", "tender_completed", "closed", "canceled"]
+    "cargoType": "string",
+    // ["passengers", "children", "persons_with_disabilities", "liquids", "explosive", "products", "need_cooling", "military_purposes"]
     "rangePrice": {
         "start": "number",
         "end": "number"
@@ -47,7 +46,13 @@
     "rangeMinimalStep": {
         "start": "number",
         "end": "number"
-    }
+    },
+    "rangeDate": {
+        "satrt": "yyyy-mm-dd",
+        "end": "yyyy-mm-dd"
+    },
+    "_search": "string"
+    // Search is based on the following fields: orders (title, description), cargo (title, description), requirement (requirements) 
 }
 ```
 
