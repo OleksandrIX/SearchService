@@ -22,7 +22,30 @@
 
 ### _**Search or filter order requirements?**_
 
-
 ### SSL
 
-#### Paste your ssl keys and certificates into the ssl directory
+- **Paste your ssl keys and certificates into the ssl directory**
+
+### Example http request with query parameters
+
+- https://localhost:9099/api/v1/orders?satus=new
+- https://localhost:9099/api/v1/orders?satus=new&range-price[start]=100&range-price[end]=10000
+- https://localhost:9099/api/v1/orders?satus=new&range-price[start]=100&range-price[end]=10000&range-minimal-step[start]=1&range-minimal-step[end]=100
+
+#### Example in the form of a json
+
+```json
+{
+    "status": "string",
+    // ["new", "receiving_proposals", "pending_tender", "tender_completed", "closed", "canceled"]
+    "range-price": {
+        "start": "number",
+        "end": "number"
+    },
+    "range-minimal-step": {
+        "start": "number",
+        "end": "number"
+    }
+}
+```
+

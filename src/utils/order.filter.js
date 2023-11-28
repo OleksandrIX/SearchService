@@ -4,7 +4,6 @@ const {Op} = require("sequelize");
 const mapOptions = {
     "status": (queryOptions, query) => {
         queryOptions["where"] = {
-            ...queryOptions["where"],
             status: OrderStatus.getOrderStatusKey(query)
         }
 
@@ -12,12 +11,17 @@ const mapOptions = {
     },
     "range-price": (queryOptions, query) => {
         queryOptions["where"] = {
-            ...queryOptions["where"],
             price: {
                 [Op.between]: [query["start"], query["end"]]
             }
         }
-
+    },
+    "range-minimal-step": (queryOptions, query) => {
+        queryOptions["where"] = {
+            minimal_step: {
+                [Op.between]: [query["start"], query["end"]]
+            }
+        }
     }
 }
 
@@ -33,6 +37,7 @@ const getQueryOptions = (query) => {
             const processedQueryOptions = mapOptions[queryKey](queryOptions, query[queryKey]);
             queryOptions = {
                 ...queryOptions,
+                where: {...queryOptions["where"]},
                 ...processedQueryOptions,
             }
         }
