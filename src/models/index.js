@@ -1,8 +1,15 @@
 module.exports = {
+    User: require("./User.model"),
     Order: require("./Order.model"),
     OrderRequirement: require("./OrderRequirement.model"),
     Cargo: require("./Cargo.model"),
-    TenderComment: require("./TenderComment.model"),
-    TenderProposal: require("./TenderProposal.model"),
-    OrderStatus: require("./OrderStatus.enum"),
+    Route: require("./Route.model"),
+    RouteDistance: require("./RouteDistance.model"),
+    RouteDuration: require("./RouteDuration.model"),
+    Point: require("./Point.model"),
+    Location: require("./Location.model"),
+    Address: require("./Address.model"),
+    OrderStatus: require("./enum/OrderStatus.enum"),
+    CargoType: require("./enum/CargoType.enum"),
+    DirectionMode: require("./enum/DirectionMode.enum"),
 }

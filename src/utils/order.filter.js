@@ -1,4 +1,15 @@
-const {OrderRequirement, OrderStatus} = require("../models");
+const {
+    OrderRequirement,
+    OrderStatus,
+    User,
+    Cargo,
+    Route,
+    RouteDistance,
+    RouteDuration,
+    Point,
+    Location,
+    Address,
+} = require("../models");
 const {rangeHandler} = require("./filter.handler");
 const {Op} = require("sequelize");
 
@@ -33,11 +44,32 @@ const mapOptions = {
 
 const getQueryOptions = (query) => {
     let queryOptions = {
-        include: {},
+        include: [
+            {model: User, as: "customer"},
+            {model: User, as: "winner"},
+            {model: OrderRequirement, as: "requirements"},
+            {model: Cargo, as: "cargos"},
+            {
+                model: Route,
+                as: "route",
+                include: [
+                    {model: RouteDistance, as: "route_distance"},
+                    {model: RouteDuration, as: "route_duration"},
+                    {
+                        model: Point,
+                        as: "points",
+                        include: [
+                            {model: Location, as: "location"},
+                            {model: Address, as: "point_address"},
+                        ]
+                    }
+                ]
+            }
+        ],
         where: {}
     };
 
-    queryOptions["include"]["model"] = OrderRequirement;
+    // queryOptions["include"]["model"] = User;
 
     for (const queryKey in query) {
         if (mapOptions[queryKey]) {
